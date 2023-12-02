@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Short Story Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Short Story Generator</h1>
+        <form method="post">
+            <label for="prompt">Enter Prompt:</label>
+            <textarea id="prompt" name="prompt" rows="4" cols="50" required></textarea>
+            <br>
+            <button type="submit">Generate Response</button>
+            <div class="loader" id="loader"></div>
+        </form>
+        {% if response_text %}
+            <div class="response">
+                <h3>Generated Response:</h3>
+                <p>{{ response_text }}</p>
+            </div>
+        {% endif %}
+    </div>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', function () {
+            document.getElementById('loader').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
